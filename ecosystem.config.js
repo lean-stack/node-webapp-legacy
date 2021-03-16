@@ -2,7 +2,8 @@ module.exports = {
   apps : [{
     name: 'node-webapp',
     script: 'server/index.js',
-    watch: true,
+    watch: ["server"],
+    watch_delay: 1000,
     env: {
       "NODE_ENV": "development",
       "PORT": 3000
