@@ -5,7 +5,7 @@ const appRoot = require('app-root-path');
 const app = express();
 
 // Serve static web page
-app.use(express.static(appRoot + '/client'));
+app.use(express.static(appRoot + '/dist'));
 
 module.exports = {
   app
