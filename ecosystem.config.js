@@ -6,11 +6,13 @@ module.exports = {
     watch_delay: 1000,
     env: {
       "NODE_ENV": "development",
-      "PORT": 3000
+      "PORT": 3000,
+      "GLOBAL_AGENT_HTTP_PROXY": ""
     },
     env_production : {
       "NODE_ENV": "production",
-      "PORT": 8080
+      "PORT": 8080,
+      "GLOBAL_AGENT_HTTP_PROXY": "http://localhost:9000"
     }
   }],
 };
