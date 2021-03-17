@@ -1,6 +1,9 @@
 // Check env variables
 require('dotenv').config();
 
+// Configure global proxy via env-Variable
+require('global-agent/bootstrap');
+
 // Dependencies
 const http = require('http');
 const { app } = require('./app');

@@ -2,14 +2,17 @@
   "private": true,
   "scripts": {
     "start": "node server",
+    "pm2": "pm2 start",
     "build": "webpack --env NODE_ENV=production --mode=production",
     "test": "jest"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "global-agent": "^2.1.12",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "webpack-dev-middleware": "^4.1.0"
