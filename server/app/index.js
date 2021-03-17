@@ -4,6 +4,7 @@ const appRoot = require('app-root-path');
 const { ratesRouter } = require('./routes/exrates');
 const { dbRouter } = require('./routes/dbaccess');
 const { productsApiRouter } = require('./routes/api/products');
+const { searchRouter } = require('./routes/search');
 
 // Create Express App
 const app = express();
@@ -23,6 +24,7 @@ app.use(express.static(appRoot + '/dist'));
 app.use('/rates', ratesRouter);
 app.use('/db', dbRouter);
 app.use('/api', productsApiRouter);
+app.use('/search', searchRouter);
 
 module.exports = {
   app

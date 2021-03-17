@@ -93,19 +93,20 @@ router.get('/products/:id', async (req, res) => {
   const products = await category.getProducts();
 
   // TODO: google for a better solution
-  const rows = products.map(p => ({
-    Id: p.Id,
-    ProductName: p.ProductName,
-    QuantityPerUnit: p.QuantityPerUnit,
-    UnitPrice: p.UnitPrice
-  }));
+  // const rows = products.map(p => ({
+  //   Id: p.Id,
+  //   ProductName: p.ProductName,
+  //   QuantityPerUnit: p.QuantityPerUnit,
+  //   UnitPrice: p.UnitPrice
+  // }));
 
   // Alternative Idee
-  const rows2 = JSON.parse(JSON.stringify(products));
+  // const rows2 = JSON.parse(JSON.stringify(products));
 
   // res.send(products);
 
-  res.render('products', { title: category.CategoryName, products: rows2 });
+  res.render('products', { title: category.CategoryName,
+    products: products.map(p => p.dataValues ) });
 });
 
 module.exports = {
