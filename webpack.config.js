@@ -42,9 +42,10 @@ module.exports = (env) => {
 
     optimization: {
       minimizer: [
-        new CssMinimizerPlugin(),
+       new CssMinimizerPlugin(),
       ]
     },
+
     // Development config
     devtool: "inline-source-map",
     devServer: {
