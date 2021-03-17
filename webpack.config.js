@@ -1,44 +1,54 @@
-const HtmlPlugin = require('html-webpack-plugin');
-const HtmlHarddiskPlugin = require('html-webpack-harddisk-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlPlugin = require("html-webpack-plugin");
+const HtmlHarddiskPlugin = require("html-webpack-harddisk-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const devMode = process.env.NODE_ENV !== 'production';
 
-module.exports = {
-  mode: devMode ? 'development' : 'production',
+module.exports = (env) => {
 
-  entry: './client/app/main.js',
+  const devMode = env.NODE_ENV !== "production";
 
-  output: {
-    filename: '[name].[contenthash].js',
-    publicPath: '/',
-    clean: true
-  },
+  return {
+    mode: devMode ? "development" : "production",
 
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-        ],
-      },
+    entry: "./client/app/main.js",
+
+    output: {
+      filename: "[name].[contenthash].js",
+      publicPath: "/",
+      clean: true,
+    },
+
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [
+            devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+            "css-loader",
+          ],
+        },
+      ],
+    },
+
+    plugins: [
+      new HtmlPlugin({
+        template: "./client/index.html",
+        alwaysWriteToDisk: true,
+      }),
+      new HtmlHarddiskPlugin(),
+      new MiniCssExtractPlugin(),
     ],
-  },
 
-  plugins: [
-    new HtmlPlugin({
-      template: './client/index.html',
-      alwaysWriteToDisk: true
-    }),
-    new HtmlHarddiskPlugin(),
-    new MiniCssExtractPlugin()
-  ],
-
-  // Development config
-   devtool: 'inline-source-map',
-   devServer: {
-     contentBase: './dist',
-   },
+    optimization: {
+      minimizer: [
+        new CssMinimizerPlugin(),
+      ]
+    },
+    // Development config
+    devtool: "inline-source-map",
+    devServer: {
+      contentBase: "./dist",
+    },
+  };
 };
