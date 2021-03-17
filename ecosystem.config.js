@@ -12,7 +12,7 @@ module.exports = {
     env_production : {
       "NODE_ENV": "production",
       "PORT": 8080,
-      "GLOBAL_AGENT_HTTP_PROXY": "http://localhost:9000"
+      "GLOBAL_AGENT_HTTP_PROXY": ""
     }
   }],
 };
