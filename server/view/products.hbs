@@ -1,0 +1,23 @@
+
+<h1>{{title}}</h1>
+
+<table class="table table-sm table-striped table-hover mt-4">
+  <thead>
+    <tr>
+      <th>Nummer</th>
+      <th>Bezeichnung</th>
+      <th>Einheit</th>
+      <th>Preis</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    <tr>
+      <td>{{Id}}</td>
+      <td>{{ProductName}}</td>
+      <td>{{QuantityPerUnit}}</td>
+      <td>{{UnitPrice}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
